@@ -5,6 +5,7 @@ import { pick } from 'src/utils';
 import { ApiError } from 'src/utils/errors';
 import { IOptions } from 'src/utils/paginate/paginate';
 import { claimService } from '.';
+import { IUserDoc } from '../user/user.interfaces';
 
 export const getClaims = async (req: Request, res: Response) => {
   const filter = pick(req.query, ['category', 'status', 'priority']);
@@ -27,8 +28,8 @@ export const getClaim = async (req: Request, res: Response) => {
 };
 
 export const createClaim = async (req: Request, res: Response) => {
-  //@ts-ignore
-  const dataClaim = { ...req.body, user: new mongoose.Types.ObjectId(req.user?._id) };
+  const user = req.user as IUserDoc;
+  const dataClaim = { ...req.body, user: new mongoose.Types.ObjectId(user._id) };
   const claim = await claimService.createClaim(dataClaim);
   res.status(httpStatus.CREATED).send(claim);
 };

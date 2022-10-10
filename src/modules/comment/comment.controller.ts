@@ -6,6 +6,7 @@ import { ApiError } from 'src/utils/errors';
 import { IOptions } from 'src/utils/paginate/paginate';
 import { commentService } from '.';
 import { claimService } from '../claim';
+import { IUserDoc } from '../user/user.interfaces';
 
 export const getCommentsByClaim = async (req: Request, res: Response) => {
   const filter = pick(req.query, ['user']);
@@ -25,10 +26,10 @@ export const getComment = async (req: Request, res: Response) => {
 };
 
 export const createComment = async (req: Request, res: Response) => {
+  const user = req.user as IUserDoc;
   const dataComment = {
     ...req.body,
-    // @ts-ignore
-    user: new mongoose.Types.ObjectId(req.user?._id),
+    user: new mongoose.Types.ObjectId(user._id),
     claim: new mongoose.Types.ObjectId(req.body.claim),
   };
   const comment = await commentService.createComment(dataComment);

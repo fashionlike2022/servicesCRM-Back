@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // jwt authentication
-// app.use(passport.initialize());
+app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
 
 // limit repeated failed requests to auth endpoints
