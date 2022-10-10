@@ -7,7 +7,7 @@
     "start": "NODE_PATH=./build node build/index.js",
     "dev": "NODE_PATH=./ npx nodemon ./src/index.ts",
     "dev:start": "ts-node src/index.ts",
-    "build": "rm -rf build && prettier --write source/ && tsc",
+    "build": "rm -rf build && prettier --write src/ && tsc",
     "prod": "npm run build && npm run start",
     "lint": "eslint src/* --fix"
   },
