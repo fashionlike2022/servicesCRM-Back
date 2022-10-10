@@ -85,6 +85,7 @@ const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
       required: true,
       index: true,
       default: () => crypto.randomBytes(24).toString('hex'),
+      private: true, // used by the toJSON plugin
     },
     status: {
       type: Boolean,
@@ -92,6 +93,8 @@ const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
     },
   },
   {
+    toJSON: { virtuals: true }, // So `res.json()` and other `JSON.stringify()` functions include virtuals
+    toObject: { virtuals: true }, // So `console.log()` and other functions that use `toObject()` include virtuals
     timestamps: true,
   }
 );
@@ -99,6 +102,11 @@ const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
 userSchema.plugin(paginate);
+
+// Virtuals
+userSchema.virtual('fullName').get(function (this: IUserDoc) {
+  return this.firstName + this.lastName;
+});
 
 /**
  * Check if email is taken

@@ -36,8 +36,10 @@ export const updateUser = async (req: Request, res: Response) => {
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
-  if (typeof req.params['userId'] === 'string') {
-    await userService.deleteUserById(new mongoose.Types.ObjectId(req.params['userId']));
-    res.status(httpStatus.NO_CONTENT);
+  const userId = typeof req.params['userId'] === 'string' && req.params['userId'];
+  if (!userId) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Comment Identifier not found');
   }
+  const result = await userService.deleteUserById(new mongoose.Types.ObjectId(userId));
+  res.send(result); //.status(httpStatus.NO_CONTENT);
 };

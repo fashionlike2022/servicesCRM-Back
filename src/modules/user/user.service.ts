@@ -90,6 +90,6 @@ export const deleteUserById = async (userId: mongoose.Types.ObjectId): Promise<I
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  await user.remove();
-  return user;
+  const result = await user.remove();
+  return result;
 };
