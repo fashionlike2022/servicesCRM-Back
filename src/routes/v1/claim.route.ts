@@ -8,11 +8,22 @@ const router: Router = express.Router();
 
 router
   .route('/')
-  .get(authMiddleware('getUsers'), validate(claimValidation.getClaims), claimController.getClaims)
-  .post(authMiddleware('manageUsers'), validate(claimValidation.createClaim), claimController.createClaim);
+  .get(authMiddleware('getUsers'), validate(claimValidation.getClaims), asyncHandler(claimController.getClaims))
+  .post(
+    authMiddleware('manageUsers'),
+    validate(claimValidation.createClaim),
+    asyncHandler(claimController.createClaim)
+  );
 
 router
-  .route('/:userId')
+  .route('/assign/:claimId')
+  .patch(
+    authMiddleware('manageUsers'),
+    validate(claimValidation.updateClaimAssign),
+    asyncHandler(claimController.updateClaimAssign)
+  );
+router
+  .route('/:claimId')
   .get(authMiddleware('getUsers'), validate(claimValidation.getClaim), asyncHandler(claimController.getClaim))
   .patch(
     authMiddleware('manageUsers'),
