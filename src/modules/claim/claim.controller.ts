@@ -8,7 +8,7 @@ import { claimService } from '.';
 
 export const getClaims = async (req: Request, res: Response) => {
   const filter = pick(req.query, ['category', 'status', 'priority']);
-  const options: IOptions = pick(req.query, ['sort', 'perPage', 'page']);
+  const options: IOptions = pick(req.query, ['sort', 'perPage', 'page', 'populate', 'select']);
   const result = await claimService.queryClaims(filter, options);
   res.send(result);
 };
@@ -27,7 +27,9 @@ export const getClaim = async (req: Request, res: Response) => {
 };
 
 export const createClaim = async (req: Request, res: Response) => {
-  const claim = await claimService.createClaim(req.body);
+  //@ts-ignore
+  const dataClaim = { ...req.body, user: new mongoose.Types.ObjectId(req.user?._id) };
+  const claim = await claimService.createClaim(dataClaim);
   res.status(httpStatus.CREATED).send(claim);
 };
 
@@ -38,9 +40,22 @@ export const updateClaim = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteClaim = async (req: Request, res: Response) => {
+export const updateClaimAssign = async (req: Request, res: Response) => {
   if (typeof req.params['claimId'] === 'string') {
-    await claimService.deleteClaimById(new mongoose.Types.ObjectId(req.params['claimId']));
-    res.status(httpStatus.NO_CONTENT);
+    // TODO: checking if id req.body.employee user has role "employee"
+    const claim = await claimService.updateClaimById(new mongoose.Types.ObjectId(req.params['claimId']), {
+      employee: new mongoose.Types.ObjectId(req.body.employee),
+    });
+    res.send(claim);
   }
+};
+
+export const deleteClaim = async (req: Request, res: Response) => {
+  const claimId = typeof req.params['claimId'] === 'string' && req.params['claimId'];
+  if (!claimId) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Claim Identifier not found');
+  }
+  const result = await claimService.deleteClaimById(new mongoose.Types.ObjectId(req.params['claimId']));
+  res.send(result);
+  // return res.status(httpStatus.NO_CONTENT);
 };
