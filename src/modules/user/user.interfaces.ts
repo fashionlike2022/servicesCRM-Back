@@ -1,6 +1,6 @@
 import mongoose, { Model, Document } from 'mongoose';
-import { QueryResult } from 'src/utils/paginate/paginate';
-import { AccessAndRefreshTokens } from 'src/utils/token/token.interfaces';
+import { QueryResult } from '../../utils/paginate/paginate';
+import { AccessAndRefreshTokens } from '../../utils/token/token.interfaces';
 export interface IUser {
   AN: string;
   dni: string;

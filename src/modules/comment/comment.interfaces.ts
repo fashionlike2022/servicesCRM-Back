@@ -1,5 +1,5 @@
 import mongoose, { Document, Model } from 'mongoose';
-import { QueryResult } from 'src/utils/paginate/paginate';
+import { QueryResult } from '../../utils/paginate/paginate';
 
 export interface IComment {
   content: string;

@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { objectId } from 'src/middlewares/validate';
+import { objectId } from '../../middlewares/validate';
 import { NewCreatedComment } from './comment.interfaces';
 
 const createCommentBody: Record<keyof NewCreatedComment, any> = {

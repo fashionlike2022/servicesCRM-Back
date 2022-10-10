@@ -1,5 +1,5 @@
 import mongoose, { Document, Model, PopulatedDoc } from 'mongoose';
-import { QueryResult } from 'src/utils/paginate/paginate';
+import { QueryResult } from '../../utils/paginate/paginate';
 import { IComment, ICommentDoc } from '../comment/comment.interfaces';
 import { IUser } from '../user/user.interfaces';
 

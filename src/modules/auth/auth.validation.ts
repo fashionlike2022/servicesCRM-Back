@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { password } from 'src/middlewares/validate';
+import { password } from '../../middlewares/validate';
 import { NewRegisteredUser } from '../user/user.interfaces';
 
 const registerBody: Record<keyof NewRegisteredUser, any> = {

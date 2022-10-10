@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import httpStatus from 'http-status';
-import { ApiError } from 'src/utils/errors';
-import { Token, tokenTypes } from 'src/utils/token';
-import { generateAuthTokens, verifyToken } from 'src/utils/token/token.service';
+import { ApiError } from '../../utils/errors';
+import { Token, tokenTypes } from '../../utils/token';
+import { generateAuthTokens, verifyToken } from '../../utils/token/token.service';
 import { IUserDoc, IUserWithTokens } from '../user/user.interfaces';
 import { getUserByEmail, getUserById, updateUserById } from '../user/user.service';
 

@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import mongoose from 'mongoose';
-import { ApiError } from 'src/utils/errors';
-import { IOptions, QueryResult } from 'src/utils/paginate/paginate';
+import { ApiError } from '../../utils/errors';
+import { IOptions, QueryResult } from '../../utils/paginate/paginate';
 import { claimService } from '../claim';
 import { ICommentDoc, NewCreatedComment, UpdateCommentBody } from './comment.interfaces';
 import Comment from './comment.model';

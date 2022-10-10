@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 import httpStatus from 'http-status';
-import { pick } from 'src/utils';
-import { ApiError } from 'src/utils/errors';
+import { pick } from '../../utils';
+import { ApiError } from '../../utils/errors';
 
 const validate =
   (schema: Record<string, any>) =>

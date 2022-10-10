@@ -2,7 +2,7 @@ import type { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import * as authService from './auth.service';
 import { userService } from '../user';
-import { tokenService } from 'src/utils/token';
+import { tokenService } from '../../utils/token';
 
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;

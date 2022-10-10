@@ -1,8 +1,8 @@
 import express, { Router } from 'express';
-import authMiddleware from 'src/middlewares/auth.middleware';
-import { validate } from 'src/middlewares/validate';
-import { claimController, claimValidation } from 'src/modules/claim';
-import { asyncHandler } from 'src/utils';
+import authMiddleware from '../../middlewares/auth.middleware';
+import { validate } from '../../middlewares/validate';
+import { asyncHandler } from '../../utils';
+import { claimController, claimValidation } from '../../modules/claim';
 
 const router: Router = express.Router();
 

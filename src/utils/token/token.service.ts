@@ -8,8 +8,8 @@ import Token from './token.model';
 import ApiError from '../errors/ApiError';
 import tokenTypes from './token.types';
 import { AccessAndRefreshTokens, ITokenDoc } from './token.interfaces';
-import { IUserDoc } from 'src/modules/user/user.interfaces';
-import { userService } from 'src/modules/user';
+import { IUserDoc } from '../../modules/user/user.interfaces';
+import { userService } from '../../modules/user';
 // import { IUserDoc } from '../user/user.interfaces';
 // import { userService } from '../user';
 

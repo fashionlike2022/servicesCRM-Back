@@ -3,7 +3,7 @@ import httpStatus from 'http-status';
 import User from './user.model';
 import ApiError from '../../utils/errors/ApiError';
 import { IUserDoc, NewCreatedUser, NewRegisteredUser, UpdateUserBody } from './user.interfaces';
-import { IOptions, QueryResult } from 'src/utils/paginate/paginate';
+import { IOptions, QueryResult } from '../../utils/paginate/paginate';
 
 /**
  * Query for users

@@ -4,8 +4,8 @@ import { customAlphabet } from 'nanoid';
 import bcrypt from 'bcrypt';
 import { roles } from '../../config/roles';
 import { IUserDoc, IUserModel } from './user.interfaces';
-import { toJSON } from 'src/utils/toJSON';
-import { paginate } from 'src/utils/paginate';
+import { toJSON } from '../../utils/toJSON';
+import { paginate } from '../../utils/paginate';
 
 const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
   {

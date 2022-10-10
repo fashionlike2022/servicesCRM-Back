@@ -2,9 +2,9 @@ import type { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import httpStatus from 'http-status';
 import { userService } from '.';
-import { ApiError } from 'src/utils/errors';
-import { pick } from 'src/utils';
-import { IOptions } from 'src/utils/paginate/paginate';
+import { ApiError } from '../../utils/errors';
+import { pick } from '../../utils';
+import { IOptions } from '../../utils/paginate/paginate';
 
 export const getUsers = async (req: Request, res: Response) => {
   const filter = pick(req.query, ['firstName', 'role']);

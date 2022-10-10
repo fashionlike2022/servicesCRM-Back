@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import mongoose from 'mongoose';
-import { pick } from 'src/utils';
-import { ApiError } from 'src/utils/errors';
-import { IOptions } from 'src/utils/paginate/paginate';
+import { pick } from '../../utils';
+import { ApiError } from '../../utils/errors';
+import { IOptions } from '../../utils/paginate/paginate';
 import { commentService } from '.';
 import { claimService } from '../claim';
 import { IUserDoc } from '../user/user.interfaces';

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { toJSON } from 'src/utils/toJSON';
-import { paginate } from 'src/utils/paginate';
+import { toJSON } from '../../utils/toJSON';
+import { paginate } from '../../utils/paginate';
 import { ICommentDoc, ICommentModel } from './comment.interfaces';
 
 const commentSchema = new mongoose.Schema<ICommentDoc, ICommentModel>(

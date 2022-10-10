@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { objectId } from 'src/middlewares/validate';
+import { objectId } from '../../middlewares/validate';
 import { NewCreatedClaim } from './claim.interfaces';
 
 const createClaimBody: Record<keyof NewCreatedClaim, any> = {

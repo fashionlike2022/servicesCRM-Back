@@ -1,6 +1,6 @@
 import mongoose, { Model } from 'mongoose';
-import { toJSON } from 'src/utils/toJSON';
-import { paginate } from 'src/utils/paginate';
+import { toJSON } from '../../utils/toJSON';
+import { paginate } from '../../utils/paginate';
 import { IClaimDoc, IClaimModel } from './claim.interfaces';
 
 const claimSchema = new mongoose.Schema<IClaimDoc, IClaimModel>(
